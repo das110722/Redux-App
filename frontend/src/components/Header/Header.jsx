@@ -1,5 +1,6 @@
 import './header.scss';
 import images from '../../assets/img';
+import PropTypes from 'prop-types';
 const Header = (props) => {
     const { setEdit } = props;
 
@@ -25,6 +26,10 @@ const Header = (props) => {
             </header>
         </>
     );
+};
+
+Header.propTypes = {
+    setEdit: PropTypes.func.isRequired,
 };
 
 export default Header;

@@ -10,11 +10,11 @@ const EditPage = () => {
         'https://preview.redd.it/cpwkbke13vv51.png?auto=webp&s=9158e49b35ad2581d840efd2a013a9ead06abbc7',
         'https://preview.redd.it/26s9eejm8vz51.png?auto=webp&s=e38d32ee0ffa0666fade2abd62ed59037c119990',
     ];
-    const [name, setName] = useState('das110722');
-    const [age, setAge] = useState(20);
-    const [about, setAbout] = useState('I am developer');
-    const [theme, setTheme] = useState('#ff9051');
-    const [image, setImage] = useState(avatarUrl[0]);
+    // const [name, setName] = useState('das110722');
+    // const [age, setAge] = useState(20);
+    // const [about, setAbout] = useState('I am developer');
+    // const [theme, setTheme] = useState('#ff9051');
+    // const [image, setImage] = useState(avatarUrl[0]);
     return (
         <>
             <form>
@@ -34,12 +34,18 @@ const EditPage = () => {
                         <label>Profile picture</label>
                         <div className="input-image-container">
                             {avatarUrl.map((url, index) => (
-                                <img key={index} className="input-image" src={url} alt="img" />
+                                <img
+                                    onClick={(e) => console.log(e.target.src)}
+                                    key={index}
+                                    className="input-image"
+                                    src={url}
+                                    alt="img"
+                                />
                             ))}
                         </div>
                         <div className="theme-container">
                             <label>Theme</label>
-                            <input type="color" className="theme-color" />
+                            <input type="color" className="theme-color" onChange={(e) => console.log(e.target.value)} />
                         </div>
                     </div>
                 </section>

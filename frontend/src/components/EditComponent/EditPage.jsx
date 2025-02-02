@@ -23,11 +23,13 @@ const EditPage = () => {
                     <div className="edit-profile">Edit Profile</div>
                     <div className="input-container">
                         <label>Display name</label>
-                        <input type="text" placeholder="Das110722" />
+                        <input type="text" placeholder="Das110722" onChange={(e) => setName(e.target.value)} />
                         <label>Age</label>
-                        <input type="text" placeholder="20" />
+                        <input type="text" placeholder="20" onChange={(e) => setAge(e.target.value)} />
                         <label> About</label>
-                        <textarea className="input-about"></textarea>
+                        <textarea className="input-about" onChange={(e) => setAbout(e.target.value)}>
+                            {' '}
+                        </textarea>
                         {/* Chose img */}
                         <label>Profile picture</label>
                         <div className="input-image-container">

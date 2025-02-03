@@ -1,0 +1,31 @@
+import PropTypes from 'prop-types';
+import '../EditComponent/Edit.scss';
+
+function Input(props) {
+    const { inputType, classStyle, label, data, setData } = props;
+    return (
+        <>
+            <label>{label}</label>
+            {inputType === 'textarea' ? (
+                <textarea
+                    type="text"
+                    className={classStyle}
+                    placeholder={data}
+                    onChange={(e) => setData(e.target.value)}
+                />
+            ) : (
+                <input type="text" placeholder={data} onChange={(e) => setData(e.target.value)} />
+            )}
+        </>
+    );
+}
+
+Input.propTypes = {
+    inputType: PropTypes.string.isRequired,
+    classStyle: PropTypes.string,
+    label: PropTypes.string.isRequired,
+    data: PropTypes.string.isRequired,
+    setData: PropTypes.func.isRequired,
+};
+
+export default Input;

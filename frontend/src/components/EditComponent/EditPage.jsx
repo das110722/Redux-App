@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import './Edit.scss';
 import Input from '../Input/Input';
-const EditPage = () => {
+const EditPage = (props) => {
+    const { setEdit } = props;
+
     const avatarUrl = [
         'https://preview.redd.it/rrz3hmsxcll71.png?width=640&crop=smart&auto=webp&s=87cc5ed38d8f088ef9fffef7a4c5756b64309d6a',
         'https://preview.redd.it/fc9k38jwfwv51.png?auto=webp&s=9ce3d4c488091bb21969fd0fad7a6d89e4bfc50d',
@@ -17,9 +19,14 @@ const EditPage = () => {
     const [about, setAbout] = useState('I am developer');
     const [theme, setTheme] = useState('#ff9051');
     const [image, setImage] = useState(avatarUrl[0]);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setEdit(false);
+    };
     return (
         <>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <section className="edit-container">
                     <button className="close">SAVE</button>
                     <div className="edit-profile">Edit Profile</div>

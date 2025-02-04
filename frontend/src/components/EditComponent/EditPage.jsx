@@ -25,7 +25,7 @@ const EditPage = (props) => {
     const [name, setName] = useState(user.name);
     const [age, setAge] = useState(user.age);
     const [about, setAbout] = useState(user.about);
-    const [theme, setTheme] = useState('#ff9051');
+    const [theme, setTheme] = useState(user.themeColor);
     const [url, setUrl] = useState(user.avaUrl);
 
     const handleSubmit = (e) => {
@@ -36,6 +36,7 @@ const EditPage = (props) => {
             age: age,
             about: about,
             avaUrl: url,
+            themeColor: theme,
         };
         dispatch(update(updateUser));
     };
@@ -69,6 +70,7 @@ const EditPage = (props) => {
                                 />
                             ))}
                         </div>
+                        {/* Theme */}
                         <div className="theme-container">
                             <label>Theme</label>
                             <input type="color" className="theme-color" onChange={(e) => setTheme(e.target.value)} />

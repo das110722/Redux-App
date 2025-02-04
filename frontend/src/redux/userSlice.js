@@ -7,6 +7,7 @@ export const userSlice = createSlice({
         age: 20,
         about: "I am developer",
         avaUrl: "https://i.redd.it/7ipyf6pvqac61.png",
+        themeColor: "#ff9051"
     },
     reducers: {
         update: (state, action) => {
@@ -14,6 +15,7 @@ export const userSlice = createSlice({
             state.age = action.payload.age;
             state.about = action.payload.about;
             state.avaUrl = action.payload.avaUrl;
+            state.themeColor = action.payload.themeColor;
         }
     }
 })

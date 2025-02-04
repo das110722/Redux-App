@@ -31,8 +31,8 @@ const EditPage = (props) => {
                     <button className="close">SAVE</button>
                     <div className="edit-profile">Edit Profile</div>
                     <div className="input-container">
-                        <Input label="Display name" data={name} setData={setName} />
-                        <Input label="Age" data={age} setData={setAge} />
+                        <Input inputType="text" label="Display name" data={name} setData={setName} />
+                        <Input inputType="number" label="Age" data={age.toString()} setData={setAge} />
                         <Input
                             inputType="textarea"
                             classStyle="input-about"

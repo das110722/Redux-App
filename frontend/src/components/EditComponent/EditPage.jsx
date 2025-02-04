@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import './Edit.scss';
 import Input from '../Input/Input';
 import PropTypes from 'prop-types';
-import { update } from '../../redux/userSlice';
+import { updateUser } from '../../redux/apiRequest';
 const EditPage = (props) => {
     const { setEdit } = props;
 
@@ -31,14 +31,14 @@ const EditPage = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setEdit(false);
-        const updateUser = {
+        const updateUserData = {
             name: name,
             age: age,
             about: about,
             avaUrl: url,
             themeColor: theme,
         };
-        dispatch(update(updateUser));
+        updateUser(updateUserData, dispatch);
     };
     return (
         <>

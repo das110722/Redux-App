@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import './Edit.scss';
 import Input from '../Input/Input';
 import PropTypes from 'prop-types';
+import { update } from '../../redux/userSlice';
 const EditPage = (props) => {
     const { setEdit } = props;
 
@@ -19,6 +20,8 @@ const EditPage = (props) => {
 
     const user = useSelector((state) => state.user);
 
+    const dispatch = useDispatch();
+
     const [name, setName] = useState(user.name);
     const [age, setAge] = useState(user.age);
     const [about, setAbout] = useState(user.about);
@@ -34,6 +37,7 @@ const EditPage = (props) => {
             about: about,
             avaUrl: url,
         };
+        dispatch(update(updateUser));
     };
     return (
         <>

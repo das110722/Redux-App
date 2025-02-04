@@ -22,10 +22,10 @@ function Input(props) {
 
 Input.propTypes = {
     inputType: PropTypes.string.isRequired,
-    classStyle: PropTypes.string,
     label: PropTypes.string.isRequired,
-    data: PropTypes.string.isRequired,
+    data: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     setData: PropTypes.func.isRequired,
+    classStyle: PropTypes.string,
 };
 
 export default Input;

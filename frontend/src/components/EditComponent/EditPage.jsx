@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import './Edit.scss';
 import Input from '../Input/Input';
+import PropTypes from 'prop-types';
 const EditPage = (props) => {
     const { setEdit } = props;
 
@@ -14,15 +16,24 @@ const EditPage = (props) => {
         'https://preview.redd.it/cpwkbke13vv51.png?auto=webp&s=9158e49b35ad2581d840efd2a013a9ead06abbc7',
         'https://preview.redd.it/26s9eejm8vz51.png?auto=webp&s=e38d32ee0ffa0666fade2abd62ed59037c119990',
     ];
-    const [name, setName] = useState('das110722');
-    const [age, setAge] = useState(20);
-    const [about, setAbout] = useState('I am developer');
+
+    const user = useSelector((state) => state.user);
+
+    const [name, setName] = useState(user.name);
+    const [age, setAge] = useState(user.age);
+    const [about, setAbout] = useState(user.about);
     const [theme, setTheme] = useState('#ff9051');
-    const [image, setImage] = useState(avatarUrl[0]);
+    const [url, setUrl] = useState(user.avaUrl);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         setEdit(false);
+        const updateUser = {
+            name: name,
+            age: age,
+            about: about,
+            avaUrl: url,
+        };
     };
     return (
         <>
@@ -31,13 +42,13 @@ const EditPage = (props) => {
                     <button className="close">SAVE</button>
                     <div className="edit-profile">Edit Profile</div>
                     <div className="input-container">
-                        <Input inputType="text" label="Display name" data={name} setData={setName} />
-                        <Input inputType="number" label="Age" data={age.toString()} setData={setAge} />
+                        <Input inputType="text" label="Display name" data={user.name} setData={setName} />
+                        <Input inputType="number" label="Age" data={user.age.toString()} setData={setAge} />
                         <Input
                             inputType="textarea"
                             classStyle="input-about"
                             label="About"
-                            data={about}
+                            data={user.about}
                             setData={setAbout}
                         />
 
@@ -46,7 +57,7 @@ const EditPage = (props) => {
                         <div className="input-image-container">
                             {avatarUrl.map((url, index) => (
                                 <img
-                                    onClick={(e) => setImage(e.target.src)}
+                                    onClick={(e) => setUrl(e.target.src)}
                                     key={index}
                                     className="input-image"
                                     src={url}
@@ -63,6 +74,10 @@ const EditPage = (props) => {
             </form>
         </>
     );
+};
+
+EditPage.propTypes = {
+    setEdit: PropTypes.func.isRequired,
 };
 
 export default EditPage;

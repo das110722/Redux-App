@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import '../EditComponent/Edit.scss';
+import '../PostComponent/PostPage.scss';
 
 function Input(props) {
     const { inputType, classStyle, label, data, setData } = props;

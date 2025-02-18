@@ -7,16 +7,20 @@ export const postSlice = createSlice({
             {
                 title: "",
                 description: "",
-                tag: 0
+                tag: 0, // Mặc định là "None"
             }
         ]
     },
     reducers: {
         createPost(state, action) {
-            state.posts = [...state.posts, action.payload]
+            state.posts.push({
+                title: action.payload.title,
+                description: action.payload.description,
+                tag: Number(action.payload.tag), // Đảm bảo tag là số
+            });
         }
     }
 })
 
-export const { createPost } = postSlice.actions
+export const { createPost } = postSlice.actions;
 export default postSlice.reducer;

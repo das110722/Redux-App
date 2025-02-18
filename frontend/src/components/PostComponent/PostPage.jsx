@@ -18,7 +18,7 @@ const PostPage = (props) => {
         const newPost = {
             title: title,
             description: desc,
-            tags: selectedIdx,
+            tag: selectedIdx,
         };
         dispatch(createPost(newPost));
     };

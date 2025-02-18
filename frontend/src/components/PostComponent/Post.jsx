@@ -6,7 +6,7 @@ const Post = () => {
     return (
         <>
             <section className="post-container">
-                {post.map((post, idx) => {
+                {post.slice(1).map((post, idx) => {
                     return (
                         <div key={idx} className="posts">
                             <p className="posts-title">{post.title}</p>

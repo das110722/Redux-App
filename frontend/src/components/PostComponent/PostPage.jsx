@@ -1,10 +1,13 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { createPost } from '../../redux/postSlice';
 import PropTypes from 'prop-types';
 import Input from '../Input/Input';
 import './PostPage.scss';
 
 const PostPage = (props) => {
     const { setPost } = props;
+    const dispatch = useDispatch();
     const [title, setTitle] = useState('Add a new title');
     const [desc, setDesc] = useState('Add a new description');
     const [selectedIdx, setSelectedIdx] = useState(0);
@@ -17,6 +20,7 @@ const PostPage = (props) => {
             description: desc,
             tags: selectedIdx,
         };
+        dispatch(createPost(newPost));
     };
     return (
         <section className="makepost-container ">

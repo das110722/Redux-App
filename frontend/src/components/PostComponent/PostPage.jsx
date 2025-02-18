@@ -5,7 +5,7 @@ import './PostPage.scss';
 const PostPage = () => {
     const [title, setTitle] = useState('Add a new title');
     const [desc, setDesc] = useState('Add a new description');
-    const tags = ['None', ' NSFW', ' Mood', ' Quotes', 'Shitpost'];
+    const tags = ['None', 'NSFW', 'Mood', 'Quotes', 'Shitpost'];
     return (
         <section className="makepost-container ">
             <div className="makepost-navigation">
@@ -18,7 +18,7 @@ const PostPage = () => {
                 {tags.map((tag) => {
                     return (
                         <>
-                            <button>{tag}</button>
+                            <button className={`makepost-tags-${tag}`}>{tag}</button>
                         </>
                     );
                 })}
